@@ -30,14 +30,38 @@
 
     & > div {
         margin-bottom: 30px;
+        width: 350px;
     }
 
     .create-button {
         font-weight: bold;
         text-transform: capitalize;
-        .create-button-span {
-            padding-left: 15px;
-        }
     }
+}
+
+.mensajeria-form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: space-between;
+
+    & > div {
+        margin-bottom: 30px;
+        width: 550px;
+    }
+
+    .send-button {
+        font-weight: bold;
+        text-transform: capitalize;
+    }
+}
+
+.button-span {
+    padding-left: 15px;
+}
+
+.MuiCardActions-root {
+    justify-content: center;
 }
 

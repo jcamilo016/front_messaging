@@ -111,7 +111,7 @@ function FormDestinatario({ onFormSubmit }){
                     ))}
                 </TextField>
                 <Button variant="contained" size="large" className="create-button" type="submit">
-                    <AddCircleIcon/><span className="create-button-span">Crear Destinatario</span>
+                    <AddCircleIcon/><span className="button-span">Crear Destinatario</span>
                 </Button>
             </form>
         </div>

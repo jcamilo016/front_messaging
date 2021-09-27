@@ -37,7 +37,7 @@ function ListaDestinatarios() {
             <Grid container spacing={4}>
                 {
                     destinatarios && destinatarios.map(destinatario => (
-                        <Grid item>
+                        <Grid item key={destinatario.userId}>
                             <CardDestinatario
                                 nombre={destinatario.name}
                                 cedula={destinatario.userId}

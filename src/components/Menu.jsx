@@ -3,6 +3,7 @@ import SwipeableViews from 'react-swipeable-views';
 import { useTheme, Box, AppBar, Tabs, Tab, Container } from "@mui/material";
 import TabPanel from "./TabPanel";
 import Destinatarios from "../pages/Destinatarios";
+import Mensajeria from "../pages/Mensajeria";
 
 function Menu() {
     const theme = useTheme();
@@ -44,7 +45,9 @@ function Menu() {
                 onChangeIndex={handleChangeIndex}
             >
                 <TabPanel value={value} index={0} dir={theme.direction}>
-                    Info Mensajeria
+                    <Container maxWidth="80%">
+                        <Mensajeria />
+                    </Container>
                 </TabPanel>
                 <TabPanel value={value} index={1} dir={theme.direction}>
                     <Container maxWidth="80%">

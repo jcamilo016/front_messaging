@@ -23,7 +23,24 @@ function useActions() {
             .then((res) => listarUsuarios())
     }
 
-    return {destinatarios, eliminarDestinatario, listarUsuarios, crearDestinatario}
+    const enviarEmail = (email) => {
+        API.post("/mensajeria/enviarMail", {...email})
+            .then((res) => console.log(res))
+    }
+
+    const enviarSms = (body) => {
+        API.post("/mensajeria/enviarSms", {...body})
+            .then((res) => console.log(res))
+    }
+
+    return {
+        destinatarios,
+        eliminarDestinatario,
+        listarUsuarios,
+        crearDestinatario,
+        enviarEmail,
+        enviarSms,
+    }
 }
 
 export default useActions;

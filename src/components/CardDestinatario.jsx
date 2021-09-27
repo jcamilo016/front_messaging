@@ -1,6 +1,5 @@
 import React from "react";
 import { Card, CardMedia, CardContent, Typography, CardActions, Button } from "@mui/material";
-import SendIcon from '@mui/icons-material/Send';
 import DeleteIcon from "@mui/icons-material/Delete"
 import MaleImage from "../static/images/user_male.svg";
 import FemaleImage from "../static/images/user_female.svg";
@@ -29,9 +28,6 @@ function CardDestinatario({nombre, cedula, telefono, email, genero, eliminar}) {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button variant="contained" endIcon={<SendIcon />}>
-                    Enviar Mensaje
-                </Button>
                 <Button variant="outlined" startIcon={<DeleteIcon />} onClick={() => eliminar(cedula)}>
                     Eliminar
                 </Button>

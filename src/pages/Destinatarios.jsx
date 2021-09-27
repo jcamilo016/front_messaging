@@ -48,10 +48,10 @@ function Destinatarios() {
                     onChange={handleChange}
                 >
                     <ToggleButton value="lista">
-                        <ViewListIcon/>{"Lista de Usuarios"}
+                        <ViewListIcon/><span className="button-span">{"Lista de destinatarios"}</span>
                     </ToggleButton>
                     <ToggleButton value="crear">
-                        <AccountCircleIcon/>Crear Usuario
+                        <AccountCircleIcon/><span className="button-span">{"Crear destinatario"}</span>
                     </ToggleButton>
                 </ToggleButtonGroup>
             </div>
