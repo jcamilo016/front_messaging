@@ -1,3 +1,43 @@
-.media {
-    background: url("./static/images/user_img.svg") no-repeat;
+.MuiCardMedia-root {
+    width: 40% !important;
+    margin: auto;
 }
+
+.alert-container {
+    position: absolute;
+    width: 90%;
+    top: 5px;
+}
+
+.MuiButton-root {
+    font-size: 12px !important;
+}
+
+.toggle-buttons-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.destinatario-form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: space-between;
+
+    & > div {
+        margin-bottom: 30px;
+    }
+
+    .create-button {
+        font-weight: bold;
+        text-transform: capitalize;
+        .create-button-span {
+            padding-left: 15px;
+        }
+    }
+}
+

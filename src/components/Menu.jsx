@@ -1,9 +1,10 @@
 import React, { useState, useCallback } from "react";
 import SwipeableViews from 'react-swipeable-views';
-import { useTheme, Box, AppBar, Tabs, Tab } from "@mui/material";
+import { useTheme, Box, AppBar, Tabs, Tab, Container } from "@mui/material";
 import TabPanel from "./TabPanel";
+import Destinatarios from "../pages/Destinatarios";
 
-function Menu(props) {
+function Menu() {
     const theme = useTheme();
     const [value, setValue] = useState(0);
 
@@ -46,10 +47,9 @@ function Menu(props) {
                     Info Mensajeria
                 </TabPanel>
                 <TabPanel value={value} index={1} dir={theme.direction}>
-                    Info Destinatarios
-                </TabPanel>
-                <TabPanel value={value} index={2} dir={theme.direction}>
-                    Item Three
+                    <Container maxWidth="80%">
+                        <Destinatarios/>
+                    </Container>
                 </TabPanel>
             </SwipeableViews>
         </Box>
