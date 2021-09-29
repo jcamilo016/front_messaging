@@ -1,16 +1,20 @@
-import React, {useCallback, useState, useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import CardDestinatario from "./CardDestinatario";
-import { Grid, AlertTitle, Alert} from "@mui/material";
-import useActions from "../hooks/useActions";
+import {Grid, AlertTitle, Alert, Skeleton} from "@mui/material";
+import {useAxios} from "use-axios-client";
+import axiosInstance from "../utils/api";
 
 function ListaDestinatarios() {
     const [showAlert, setShowAlert] = useState(false);
-    const {destinatarios, eliminarDestinatario} = useActions();
+    const { data, loading, error, refetch } = useAxios({
+        axiosInstance,
+        url: '/destinatario'
+    });
 
     useEffect(() => {
 
         const timeId = setTimeout(() => {
-            if(showAlert === true) {
+            if (showAlert === true) {
                 setShowAlert(false)
             }
         }, 3000)
@@ -20,11 +24,7 @@ function ListaDestinatarios() {
         }
     }, [showAlert]);
 
-    const eliminar = useCallback((cedula) => {
-        eliminarDestinatario(cedula);
-        setShowAlert(true);
-    }, [eliminarDestinatario]);
-
+    console.log(data);
 
     return (
         <>
@@ -35,20 +35,54 @@ function ListaDestinatarios() {
                 </Alert>
             )}
             <Grid container spacing={4}>
-                {
-                    destinatarios && destinatarios.map(destinatario => (
-                        <Grid item key={destinatario.userId}>
-                            <CardDestinatario
-                                nombre={destinatario.name}
-                                cedula={destinatario.userId}
-                                telefono={destinatario.phone}
-                                email={destinatario.email}
-                                genero={destinatario.genre}
-                                eliminar={eliminar}
-                            />
+                {data && data.map(destinatario => (
+                    <Grid item key={destinatario.userId}>
+                        <CardDestinatario
+                            nombre={destinatario.name}
+                            cedula={destinatario.userId}
+                            telefono={destinatario.phone}
+                            email={destinatario.email}
+                            genero={destinatario.genre}
+                            setShowAlert={setShowAlert}
+                            refetch={refetch}
+                        />
+                    </Grid>
+                ))}
+                {loading && (
+                    <Grid container spacing={2} justifyContent="center" sx={{marginTop: "25px"}}>
+                        <Grid item>
+                            <Skeleton variant="rectangular" width={300} height={300}/>
                         </Grid>
-                    ))
-                }
+                        <Grid item>
+                            <Skeleton variant="rectangular" width={300} height={300}/>
+                        </Grid>
+                        <Grid item>
+                            <Skeleton variant="rectangular" width={300} height={300}/>
+                        </Grid>
+                        <Grid item>
+                            <Skeleton variant="rectangular" width={300} height={300}/>
+                        </Grid>
+                        <Grid item>
+                            <Skeleton variant="rectangular" width={300} height={300}/>
+                        </Grid>
+                        <Grid item>
+                            <Skeleton variant="rectangular" width={300} height={300}/>
+                        </Grid>
+                        <Grid item>
+                            <Skeleton variant="rectangular" width={300} height={300}/>
+                        </Grid>
+                        <Grid item>
+                            <Skeleton variant="rectangular" width={300} height={300}/>
+                        </Grid>
+                    </Grid>
+                )}
+                {error && (
+                    <Grid container justifyContent="center" sx={{marginTop: "25px"}}>
+                        <Grid item>
+                            Error :(
+                        </Grid>
+                    </Grid>
+                )}
             </Grid>
         </>
     )

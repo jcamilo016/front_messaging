@@ -1,12 +1,28 @@
 import React, {useState} from "react";
 import {useFormik} from 'formik';
-import {Button, InputAdornment, MenuItem, TextField} from "@mui/material";
+import {InputAdornment, MenuItem, TextField} from "@mui/material";
+import LoadingButton from '@mui/lab/LoadingButton';
 import PermPhoneMsgIcon from '@mui/icons-material/PermPhoneMsg';
 import SendIcon from "@mui/icons-material/Send";
+import { useLazyAxios } from "use-axios-client";
+import axiosInstance from "../utils/api";
 
-function FormSMS({destinatarios, onFormSMSSubmit }) {
+function FormSMS({destinatarios, setShowAlert }) {
     const [smsTo, setSmsTo] = useState("");
-    const phoneList = destinatarios.map(d => ({value: d.phone, label: d.phone}));
+    const phoneList = destinatarios.map(d => ({value: d.phone, label: `${d.phone} - ${d.name}`}));
+
+    const [saveData, { loading }] = useLazyAxios({
+        axiosInstance,
+        url: "mensajeria/enviarSms",
+        method: "POST"
+    });
+
+    const onFormSMSSubmit = (values) => {
+        saveData(values)
+            .then(res => {
+                setShowAlert(true);
+            })
+    }
 
     const handlePhoneToChange = (event) => {
         setSmsTo(event.target.value);
@@ -53,9 +69,16 @@ function FormSMS({destinatarios, onFormSMSSubmit }) {
                     onChange={formik.handleChange}
                     helperText="Texto del mensaje a enviar"
                 />
-                <Button variant="contained" size="large" className="create-button" type="submit">
-                    <SendIcon/><span className="button-span">Enviar Sms</span>
-                </Button>
+                <LoadingButton
+                    variant="contained"
+                    size="large"
+                    className="create-button"
+                    type="submit"
+                    startIcon={<SendIcon/>}
+                    loadingPosition="start"
+                    loading={loading} >
+                        Enviar Sms
+                </LoadingButton>
             </form>
         </div>
     )

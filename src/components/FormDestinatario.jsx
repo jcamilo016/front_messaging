@@ -1,6 +1,7 @@
 import React from "react";
 import { useFormik } from 'formik';
-import { TextField, InputAdornment, MenuItem, Button } from '@mui/material';
+import { TextField, InputAdornment, MenuItem } from '@mui/material';
+import LoadingButton from '@mui/lab/LoadingButton';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import PhoneIcon from '@mui/icons-material/Phone';
@@ -19,7 +20,7 @@ const genres = [
     }
 ];
 
-function FormDestinatario({ onFormSubmit }){
+function FormDestinatario({ onFormSubmit, isLoading }){
     const [genero, setGenero] = React.useState('HOMBRE');
 
     const handleGenreChange = (event) => {
@@ -110,9 +111,17 @@ function FormDestinatario({ onFormSubmit }){
                         </MenuItem>
                     ))}
                 </TextField>
-                <Button variant="contained" size="large" className="create-button" type="submit">
-                    <AddCircleIcon/><span className="button-span">Crear Destinatario</span>
-                </Button>
+                <LoadingButton
+                    variant="contained"
+                    size="large"
+                    className="create-button"
+                    type="submit"
+                    startIcon={<AddCircleIcon/>}
+                    loadingPosition="start"
+                    loading={isLoading}
+                >
+                        Crear Destinatario
+                </LoadingButton>
             </form>
         </div>
     )

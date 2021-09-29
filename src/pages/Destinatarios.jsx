@@ -4,14 +4,18 @@ import ViewListIcon from '@mui/icons-material/ViewList';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ListaDestinatarios from "../components/ListaDestinatarios";
 import FormDestinatario from "../components/FormDestinatario";
-import useActions from "../hooks/useActions";
-
+import { useLazyAxios } from "use-axios-client";
+import axiosInstance from "../utils/api";
 
 function Destinatarios() {
     const [showAlert, setShowAlert] = useState(false);
     const [alignment, setAlignment] = React.useState("lista");
 
-    const {crearDestinatario} = useActions();
+    const [saveData, { loading }] = useLazyAxios({
+        axiosInstance,
+        url: `destinatario/crear`,
+        method: "POST"
+    });
 
     useEffect(() => {
 
@@ -27,11 +31,13 @@ function Destinatarios() {
     }, [showAlert]);
 
 
-    const onFormSubmit = useCallback(async (values) => {
-        await crearDestinatario(values);
-        setShowAlert(true);
-        setAlignment("lista");
-    }, [crearDestinatario]);
+    const onFormSubmit = useCallback( (values) => {
+        saveData(values)
+            .then(res => {
+                setAlignment("lista");
+                setShowAlert(true);
+            });
+    }, [saveData]);
 
 
     const handleChange = (event, newAlignment) => {
@@ -62,7 +68,7 @@ function Destinatarios() {
                 </Alert>
             )}
             {alignment === "lista" && (<ListaDestinatarios/>)}
-            {alignment === "crear" && (<FormDestinatario onFormSubmit={onFormSubmit}/>)}
+            {alignment === "crear" && (<FormDestinatario onFormSubmit={onFormSubmit} isLoading={loading}/>)}
         </>
     );
 }

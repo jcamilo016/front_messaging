@@ -1,15 +1,20 @@
-import React, {useCallback, useEffect, useState} from "react";
-import {Alert, AlertTitle, ToggleButton, ToggleButtonGroup} from "@mui/material";
+import {useEffect, useState} from "react";
+import {Alert, AlertTitle, ToggleButton, ToggleButtonGroup, Skeleton, Grid} from "@mui/material";
 import EmailIcon from '@mui/icons-material/Email';
 import SmsIcon from '@mui/icons-material/Sms';
-import useActions from "../hooks/useActions";
 import FormEmail from "../components/FormEmail";
 import FormSMS from "../components/FormSMS";
+import {useAxios} from "use-axios-client";
+import axiosInstance from "../utils/api";
 
 function Mensajeria() {
     const [showAlert, setShowAlert] = useState(false);
-    const [sendOption, setSendOption] = React.useState("email");
-    const { destinatarios, enviarEmail, enviarSms } = useActions();
+    const [sendOption, setSendOption] = useState("email");
+
+    const { data: destinatarios, loading } = useAxios({
+        axiosInstance,
+        url: '/destinatario'
+    });
 
     useEffect(() => {
 
@@ -27,16 +32,6 @@ function Mensajeria() {
     const handleChange = (event, newOption) => {
         setSendOption(newOption);
     }
-
-    const onFormEmailSubmit = useCallback(async (values) => {
-        await enviarEmail(values);
-        setShowAlert(true);
-    }, [enviarEmail]);
-
-    const onFormSMSSubmit = useCallback(async (values) => {
-        await enviarSms(values);
-        setShowAlert(true);
-    }, [enviarSms]);
 
     return (
         <>
@@ -61,8 +56,21 @@ function Mensajeria() {
                     Se ha enviado el mensaje
                 </Alert>
             )}
-            {sendOption === "email" && (<FormEmail destinatarios={destinatarios} onFormEmailSubmit={onFormEmailSubmit}/>)}
-            {sendOption === "sms" && (<FormSMS destinatarios={destinatarios} onFormSMSSubmit={onFormSMSSubmit}/>)}
+            {destinatarios && sendOption === "email" && (<FormEmail destinatarios={destinatarios} setShowAlert={setShowAlert}/>)}
+            {destinatarios && sendOption === "sms" && (<FormSMS destinatarios={destinatarios} setShowAlert={setShowAlert}/>)}
+            {loading && (
+                <Grid container spacing={4} justifyContent="center" sx={{marginTop: "25px"}} direction="column" alignItems="center">
+                    <Grid item>
+                        <Skeleton variant="rectangular" width={536} height={40} />
+                    </Grid>
+                    <Grid item>
+                        <Skeleton variant="rectangular" width={536} height={40} />
+                    </Grid>
+                    <Grid item>
+                        <Skeleton variant="rectangular" width={536} height={138} />
+                    </Grid>
+                </Grid>
+            )}
         </>
     )
 }
