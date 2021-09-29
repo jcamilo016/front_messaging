@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/front_messaging/static/css/main.eca38936.chunk.css",
-    "main.js": "/front_messaging/static/js/main.c8c9523b.chunk.js",
-    "main.js.map": "/front_messaging/static/js/main.c8c9523b.chunk.js.map",
-    "runtime-main.js": "/front_messaging/static/js/runtime-main.4f3d4274.js",
-    "runtime-main.js.map": "/front_messaging/static/js/runtime-main.4f3d4274.js.map",
-    "static/js/2.876c7ac7.chunk.js": "/front_messaging/static/js/2.876c7ac7.chunk.js",
-    "static/js/2.876c7ac7.chunk.js.map": "/front_messaging/static/js/2.876c7ac7.chunk.js.map",
-    "static/js/3.f346a70e.chunk.js": "/front_messaging/static/js/3.f346a70e.chunk.js",
-    "static/js/3.f346a70e.chunk.js.map": "/front_messaging/static/js/3.f346a70e.chunk.js.map",
+    "main.css": "/front_messaging/static/css/main.bf7f0fa6.chunk.css",
+    "main.js": "/front_messaging/static/js/main.9db3df5c.chunk.js",
+    "main.js.map": "/front_messaging/static/js/main.9db3df5c.chunk.js.map",
+    "runtime-main.js": "/front_messaging/static/js/runtime-main.554b88ee.js",
+    "runtime-main.js.map": "/front_messaging/static/js/runtime-main.554b88ee.js.map",
+    "static/js/2.b9f70188.chunk.js": "/front_messaging/static/js/2.b9f70188.chunk.js",
+    "static/js/2.b9f70188.chunk.js.map": "/front_messaging/static/js/2.b9f70188.chunk.js.map",
+    "static/js/3.e1b45bea.chunk.js": "/front_messaging/static/js/3.e1b45bea.chunk.js",
+    "static/js/3.e1b45bea.chunk.js.map": "/front_messaging/static/js/3.e1b45bea.chunk.js.map",
     "index.html": "/front_messaging/index.html",
-    "static/css/main.eca38936.chunk.css.map": "/front_messaging/static/css/main.eca38936.chunk.css.map",
-    "static/js/2.876c7ac7.chunk.js.LICENSE.txt": "/front_messaging/static/js/2.876c7ac7.chunk.js.LICENSE.txt",
+    "static/css/main.bf7f0fa6.chunk.css.map": "/front_messaging/static/css/main.bf7f0fa6.chunk.css.map",
+    "static/js/2.b9f70188.chunk.js.LICENSE.txt": "/front_messaging/static/js/2.b9f70188.chunk.js.LICENSE.txt",
     "static/media/user_female.ead7f208.svg": "/front_messaging/static/media/user_female.ead7f208.svg",
     "static/media/user_male.170c800c.svg": "/front_messaging/static/media/user_male.170c800c.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.4f3d4274.js",
-    "static/js/2.876c7ac7.chunk.js",
-    "static/css/main.eca38936.chunk.css",
-    "static/js/main.c8c9523b.chunk.js"
+    "static/js/runtime-main.554b88ee.js",
+    "static/js/2.b9f70188.chunk.js",
+    "static/css/main.bf7f0fa6.chunk.css",
+    "static/js/main.9db3df5c.chunk.js"
   ]
 }

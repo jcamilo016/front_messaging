@@ -4,6 +4,13 @@ object-assign
 @license MIT
 */
 
+/*!
+   * Determine if an object is a Buffer
+   *
+   * @author   Feross Aboukhadijeh <https://feross.org>
+   * @license  MIT
+   */
+
 /** @license MUI v5.0.1
  *
  * This source code is licensed under the MIT license found in the
